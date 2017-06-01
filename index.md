@@ -74,3 +74,38 @@ Lines in HTTP are separated by `\r\n`. The end of headers is indicated with a do
 # REST 
 
 REST - **Re**presentational **S**tate **T**ransfer
+
+REST is a way of designing web services in a way that models data as resources. 
+HTTP verbs are then used to read or modify the data.
+
+Example - claims in Identity
+
+`GET /id/api/v2/users/{handle}/claims` - returns the list of all claims that a user has (identified by `handle`)
+
+`PUT /id/api/v2/users/{handle}/claims/{claim}` - adds `claim` to the user
+
+`DELETE /id/api/v2/users/{handle}/claims/{claim}` - removes `claim` from the user
+
+Example - creating a user
+
+`POST /id/api/v2/users` - creates a user (using the parameters provided in the body of the request)
+
+## Semantic verbs
+
+* `GET` - return the current state of a resource
+* `POST` - create a new resource without specifying its location
+* `PUT` - create a new resource with specified location
+* `DELETE` - remove a resource
+* `PATCH` - modify an existing resource
+
+There are several other verbs, but they are used much less, if at all, in a REST API.
+
+## Idempotency
+
+Some of the HTTP verbs are specified to be *idempotent*. This means that requesting a given with an idempotent verb multiple should end up with the resource in the same state as it would be if it were called once.
+
+The easiest example of this is `GET`, which does not change the resource, so each time you call it &mdash; barring others changing the resource &mdash; you should get back the same value.
+
+Another example of an idempotent interaction is the `PUT` on claims. Add a claim to a user multiple times will have the same effect as calling it once.
+
+As a counter example, `POST` is not idempotent. If I call `POST /id/api/v2/users` multiple times, multiple users will be created.
