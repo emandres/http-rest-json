@@ -11,7 +11,11 @@ JSON &mdash; **J**ava**s**cript **O**bject **N**otation
         "arrayValue": [
             "item1",
             "item2"
-        ]
+        ],
+        "objectValue": {
+            "key1": "value1",
+            "key2": "value2"
+        }
     }
 ```
 
@@ -86,13 +90,14 @@ HTTP verbs are then used to read or modify the data.
 
 `DELETE /id/api/v2/users/{handle}/claims/{claim}` - removes `claim` from the user
 
-## Example - creating a user
+## Example - users in Identity
 
 `POST /id/api/v2/users` - creates a user (using the parameters provided in the body of the request)
+`GET /id/api/v2/users/{handle}` - gets the user identified by `handle`. In this case, `users` is a collection resource.
 
 ## Semantic verbs
 
-* `GET` - return the current state of a resource
+* `GET` - return the current state of a resource. `GET` should never change state of a resource.
 * `POST` - create a new resource without specifying its location
 * `PUT` - create a new resource with specified location
 * `DELETE` - remove a resource
