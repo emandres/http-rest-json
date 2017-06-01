@@ -78,7 +78,7 @@ REST - **Re**presentational **S**tate **T**ransfer
 REST is a way of designing web services in a way that models data as resources. 
 HTTP verbs are then used to read or modify the data.
 
-Example - claims in Identity
+## Example - claims in Identity
 
 `GET /id/api/v2/users/{handle}/claims` - returns the list of all claims that a user has (identified by `handle`)
 
@@ -86,7 +86,7 @@ Example - claims in Identity
 
 `DELETE /id/api/v2/users/{handle}/claims/{claim}` - removes `claim` from the user
 
-Example - creating a user
+## Example - creating a user
 
 `POST /id/api/v2/users` - creates a user (using the parameters provided in the body of the request)
 
@@ -102,7 +102,7 @@ There are several other verbs, but they are used much less, if at all, in a REST
 
 ## Idempotency
 
-Some of the HTTP verbs are specified to be *idempotent*. This means that requesting a given with an idempotent verb multiple should end up with the resource in the same state as it would be if it were called once.
+Some of the HTTP verbs are specified to be *idempotent*. This means that requesting a given resource with an idempotent verb multiple should end up with the resource in the same state as it would be if it were called once.
 
 The easiest example of this is `GET`, which does not change the resource, so each time you call it &mdash; barring others changing the resource &mdash; you should get back the same value.
 
