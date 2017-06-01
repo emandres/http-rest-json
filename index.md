@@ -102,7 +102,7 @@ There are several other verbs, but they are used much less, if at all, in a REST
 
 ## Idempotency
 
-Some of the HTTP verbs are specified to be *idempotent*. This means that requesting a given resource with an idempotent verb multiple should end up with the resource in the same state as it would be if it were called once.
+Some of the HTTP verbs are specified to be *idempotent*. This means that requesting a given resource with an idempotent verb multiple times should end up with the resource in the same state as it would be if it were called once.
 
 The easiest example of this is `GET`, which does not change the resource, so each time you call it &mdash; barring others changing the resource &mdash; you should get back the same value.
 
